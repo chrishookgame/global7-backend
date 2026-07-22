@@ -1,0 +1,19 @@
+# Levanta una base de datos PostgreSQL local para desarrollo.
+# Uso: docker compose up -d
+# (Si prefieres no instalar Docker, usa una base gratuita en Supabase o Neon
+# y salta este archivo — solo cambia DATABASE_URL en tu .env)
+services:
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: global7
+    ports:
+      - "5432:5432"
+    volumes:
+      - global7_pgdata:/var/lib/postgresql/data
+
+volumes:
+  global7_pgdata:
